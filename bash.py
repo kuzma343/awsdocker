@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import ParseMode
 
-API_TOKEN = '6635168570:AAF_Gh6YdoT1Cv6MWxfBXggOZhEsOy9uuIE'
+API_TOKEN = ''
 
 logging.basicConfig(level=logging.INFO)
 
