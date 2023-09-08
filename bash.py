@@ -32,7 +32,7 @@ async def on_start(message: types.Message):
 @dp.message_handler(lambda message: message.text == "Запустити скрипт")
 async def run_script(message: types.Message):
     try:
-        subprocess.run(['/home/kuzma/qwerty.sh'], check=True, shell=True)
+        subprocess.run(['/awsdocker/qwerty.sh'], check=True, shell=True)
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
@@ -40,7 +40,7 @@ async def run_script(message: types.Message):
 @dp.message_handler(lambda message: message.text == "запустити контейнер")
 async def run_script_1(message: types.Message):
     try:
-        subprocess.run(['/home/kuzma/qwerty2.sh'], check=True, shell=True)
+        subprocess.run(['/awsdocker/qwerty2.sh'], check=True, shell=True)
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
@@ -48,7 +48,7 @@ async def run_script_1(message: types.Message):
 @dp.message_handler(lambda message: message.text == "зупинити контейнер")
 async def run_script_2(message: types.Message):
     try:
-        subprocess.run(['/home/kuzma/qwerty3.sh'], check=True, shell=True)
+        subprocess.run(['/awsdocker/qwerty3.sh'], check=True, shell=True)
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
@@ -56,7 +56,7 @@ async def run_script_2(message: types.Message):
 @dp.message_handler(lambda message: message.text == "видалити контейнер")
 async def run_script_3(message: types.Message):
     try:
-        subprocess.run(['/home/kuzma/qwerty4.sh'], check=True, shell=True)
+        subprocess.run(['/awsdocker/qwerty4.sh'], check=True, shell=True)
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
@@ -64,7 +64,7 @@ async def run_script_3(message: types.Message):
 @dp.message_handler(lambda message: message.text == "оновити контейнер")
 async def run_script_4(message: types.Message):
     try:
-        subprocess.run(['/home/kuzma/qwerty5.sh'], check=True, shell=True)
+        subprocess.run(['/awsdocker/qwerty5.sh'], check=True, shell=True)
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
