@@ -24,6 +24,7 @@ sudo systemctl restart docker
 
 
 sudo apt update
+
 sudo apt install -y git
 
 
@@ -43,9 +44,13 @@ cd awsdocker/
 
 
 chmod +x /awsdocker/qwerty.sh
+
 chmod +x /awsdocker/qwerty2.sh
+
 chmod +x /awsdocker/qwerty3.sh
+
 chmod +x /awsdocker/qwerty4.sh
+
 chmod +x /awsdocker/qwerty5.sh
 
 
