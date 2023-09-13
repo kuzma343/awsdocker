@@ -15,3 +15,7 @@ else
     echo "Контейнер 'nginx-container' был создан и запущен на порту 8080."
 fi
 
+# Копируем файл mysait.html в контейнер
+docker cp mysait.html nginx-container:/usr/share/nginx/html/index.html
+echo "Зміст файлу mysait.html був скопійований в контейнер 'nginx-container'."
+
