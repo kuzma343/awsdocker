@@ -1,14 +1,14 @@
 import boto3
 
-
+# Ваші дані доступу
 access_key = ''
 secret_key = ''
 region_name = 'eu-north-1'  
 
-
+# Створюємо клієнта для Amazon EC2
 ec2 = boto3.client('ec2', aws_access_key_id=access_key, aws_secret_access_key=secret_key, region_name=region_name)
 
-
+# Параметри для створення інстанса
 instance_type = 't3.micro'  
 key_name = 'kuzma'  
 security_group_ids = ['sg-02176327c590ef2ad'] 
