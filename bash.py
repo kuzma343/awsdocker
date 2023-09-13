@@ -5,9 +5,9 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import ParseMode
 
 API_TOKEN = '6635168570:AAF_Gh6YdoT1Cv6MWxfBXggOZhEsOy9uuIE'
-
+# Налаштування логування
 logging.basicConfig(level=logging.INFO)
-
+# Створюємо об'єкт бота та диспетчера
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
@@ -24,11 +24,11 @@ markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 markup.add(start_button)
 markup.add(button1, button2)
 markup.add(button3, button4)
-
+# Обробник команди /start
 @dp.message_handler(commands=['start'])
 async def on_start(message: types.Message):
     await message.reply("Привіт! Обери, який скрипт запустити.", reply_markup=markup)
-
+# Обробник для кнопки "Запустити скрипт"
 @dp.message_handler(lambda message: message.text == "Запустити скрипт")
 async def run_script(message: types.Message):
     try:
@@ -36,7 +36,7 @@ async def run_script(message: types.Message):
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
-
+# Обробник для кнопки
 @dp.message_handler(lambda message: message.text == "запустити контейнер")
 async def run_script_1(message: types.Message):
     try:
@@ -44,7 +44,7 @@ async def run_script_1(message: types.Message):
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
-
+# Обробник для кнопки
 @dp.message_handler(lambda message: message.text == "зупинити контейнер")
 async def run_script_2(message: types.Message):
     try:
@@ -52,7 +52,7 @@ async def run_script_2(message: types.Message):
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
-
+# Обробник для кнопки
 @dp.message_handler(lambda message: message.text == "видалити контейнер")
 async def run_script_3(message: types.Message):
     try:
@@ -60,7 +60,7 @@ async def run_script_3(message: types.Message):
         await message.reply("Скрипт успішно запущений!")
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
-
+# Обробник для кнопки
 @dp.message_handler(lambda message: message.text == "оновити контейнер")
 async def run_script_4(message: types.Message):
     try:
