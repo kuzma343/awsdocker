@@ -1,4 +1,3 @@
-i = 0
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
@@ -93,3 +92,7 @@ async def run_script_4(message: types.Message):
 if __name__ == '__main__':
     from aiogram import executor
     executor.start_polling(dp, skip_updates=True)
+
+
+i=0
+
