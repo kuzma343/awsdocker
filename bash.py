@@ -13,13 +13,13 @@ dp.middleware.setup(LoggingMiddleware())
 
 password = 'password'  # Підставте свій пароль тут
 
-global i  # Додаємо цей рядок для позначення того, що i - глобальна змінна
+  # Додаємо цей рядок для позначення того, що i - глобальна змінна
 
 authenticated = False  # Змінна для відстеження стану автентифікації
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-    global i, authenticated
+    global  authenticated
     if not authenticated:
         await message.reply("Введіть пароль:")
     else:
@@ -30,11 +30,11 @@ async def process_password_correct(message: types.Message):
     global i, authenticated
     authenticated = True  # Користувач автентифікований
     await message.reply("Пароль вірний. Ласкаво просимо!")
-    i = 1
-
-@dp.message_handler(lambda message: message.text != password)
-async def process_password_incorrect(message: types.Message):
-    await message.reply("Пароль невірний. Спробуйте ще раз:")
+    
+if authenticated == False :
+    @dp.message_handler(lambda message: message.text != password)
+    async def process_password_incorrect(message: types.Message):
+        await message.reply("Пароль невірний. Спробуйте ще раз:")
 
 
 start_button = types.KeyboardButton('Запустити скрипт')
@@ -93,6 +93,6 @@ if __name__ == '__main__':
     from aiogram import executor
     executor.start_polling(dp, skip_updates=True)
 
+authenticated = False
 
-i=0
 
