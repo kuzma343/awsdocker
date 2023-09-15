@@ -1,42 +1,18 @@
 import logging
+import subprocess
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import ParseMode
-from aiogram.utils import executor
-import subprocess
-API_TOKEN = '6635168570:AAF_Gh6YdoT1Cv6MWxfBXggOZhEsOy9uuIE'  # Підставте свій API токен
-logging.basicConfig(level=logging.INFO)
 
+API_TOKEN = '6635168570:AAF_Gh6YdoT1Cv6MWxfBXggOZhEsOy9uuIE'
+# Налаштування логування
+logging.basicConfig(level=logging.INFO)
+# Створюємо об'єкт бота та диспетчера
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
 
-password = 'password'  # Підставте свій пароль тут
-
-  # Додаємо цей рядок для позначення того, що i - глобальна змінна
-
-authenticated = False  # Змінна для відстеження стану автентифікації
-
-@dp.message_handler(commands=['start'])
-async def send_welcome(message: types.Message):
-    global  authenticated
-    if not authenticated:
-        await message.reply("Введіть пароль:")
-    else:
-        await message.reply("Привіт! Обери, який скрипт запустити.", reply_markup=markup)
-
-@dp.message_handler(lambda message: message.text == password)
-async def process_password_correct(message: types.Message):
-    global i, authenticated
-    authenticated = True  # Користувач автентифікований
-    await message.reply("Пароль вірний. Ласкаво просимо!")
-    
-if authenticated == False :
-    @dp.message_handler(lambda message: message.text != password)
-    async def process_password_incorrect(message: types.Message):
-        await message.reply("Пароль невірний. Спробуйте ще раз:")
-
-
+# Кнопки, які буде натискати користувач
 start_button = types.KeyboardButton('Запустити скрипт')
 button1 = types.KeyboardButton('запустити контейнер')
 button2 = types.KeyboardButton('зупинити контейнер')
@@ -48,6 +24,11 @@ markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 markup.add(start_button)
 markup.add(button1, button2)
 markup.add(button3, button4)
+# Обробник команди /start
+@dp.message_handler(commands=['start'])
+async def on_start(message: types.Message):
+    await message.reply("Привіт! Обери, який скрипт запустити.", reply_markup=markup)
+# Обробник для кнопки "Запустити скрипт"
 @dp.message_handler(lambda message: message.text == "Запустити скрипт")
 async def run_script(message: types.Message):
     try:
@@ -88,11 +69,9 @@ async def run_script_4(message: types.Message):
     except subprocess.CalledProcessError:
         await message.reply("Під час виконання скрипту сталася помилка.")
 
-
 if __name__ == '__main__':
     from aiogram import executor
     executor.start_polling(dp, skip_updates=True)
-
 authenticated = False
 
 
