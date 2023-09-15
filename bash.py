@@ -1,3 +1,4 @@
+i = 0
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
@@ -14,7 +15,7 @@ dp.middleware.setup(LoggingMiddleware())
 password = 'password'  # Підставте свій пароль тут
 
 global i  # Додаємо цей рядок для позначення того, що i - глобальна змінна
-i = 0
+
 authenticated = False  # Змінна для відстеження стану автентифікації
 
 @dp.message_handler(commands=['start'])
